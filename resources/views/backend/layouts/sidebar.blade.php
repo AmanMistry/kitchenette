@@ -19,7 +19,14 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li><a href="index2.html"><i class="material-icons">adjust</i><span class="hide-menu">Dashboard-2</span></a></li>
+                                    <li><a href="javascript: void(1);" class="collapsible-header has-arrow"><i class="material-icons">adjust</i><span class="nav-text">Category Management</span></a>
+                                        <div class="collapsible-body">
+                                            <ul class="collapsible" data-collapsible="accordion">
+                                                <li><a href="{{ route('category.index') }}"><i class="material-icons">adjust</i><span class="hide-menu">All category</span></a></li>
+                                                <li><a href="{{ route('category.create') }}"><i class="material-icons">adjust</i><span class="hide-menu">Add category</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
                                     <li><a href="index3.html"><i class="material-icons">adjust</i><span class="hide-menu">Dashboard-3</span></a></li>
                                     <li><a href="index4.html"><i class="material-icons">adjust</i><span class="hide-menu">Dashboard-4</span></a></li>
                                 </ul>
