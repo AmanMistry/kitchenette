@@ -27,7 +27,14 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li><a href="index3.html"><i class="material-icons">adjust</i><span class="hide-menu">Dashboard-3</span></a></li>
+                                    <li><a href="javascript: void(1);" class="collapsible-header has-arrow"><i class="material-icons">adjust</i><span class="nav-text">Menu Management</span></a>
+                                        <div class="collapsible-body">
+                                            <ul class="collapsible" data-collapsible="accordion">
+                                                <li><a href="{{ route('menu.index') }}"><i class="material-icons">adjust</i><span class="hide-menu">All Menu</span></a></li>
+                                                <li><a href="{{ route('menu.create') }}"><i class="material-icons">adjust</i><span class="hide-menu">Add Menu</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
                                     <li><a href="index4.html"><i class="material-icons">adjust</i><span class="hide-menu">Dashboard-4</span></a></li>
                                 </ul>
                             </div>

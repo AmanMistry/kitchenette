@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
+use Illuminate\Support\Str;
+
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -14,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories=Category::orderBy('id','DESC')->get();
-        return view('category.category.index',compact('category'));
+        return view('backend.category.index',compact('categories'));
     }
 
     /**
@@ -24,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.category.create');
     }
 
     /**
@@ -35,7 +39,22 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'type' => 'nullable|in:veg,nonveg',
+            'meal' => 'nullable|in:lunch,dinner',
+            'photo' => 'required',
+            'status' => 'nullable|in:active,inactive',
+        ]);
+        $data=$request->all();
+        
+        $status=Category::create($data);
+        if($status)
+        {
+            return redirect()->route('category.index')->with('success','successfully created Category');
+        }
+        else{
+            return back()->with('error','something went wrong');
+        }
     }
 
     /**
@@ -57,7 +76,14 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories=Category::find($id);
+        if($categories)
+        {
+            return view('backend.category.edit',compact('categories'));
+        }
+        else{
+            return back()->with('error','Data not found');
+        }
     }
 
     /**
@@ -69,7 +95,29 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categories=Category::find($id);
+        if($categories)
+        {
+            $this->validate($request,[
+                'type' => 'nullable|in:veg,nonveg',
+                'meal' => 'nullable|in:lunch,dinner',
+                'photo' => 'required',
+                'status' => 'nullable|in:active,inactive',
+            ]);
+            $data=$request->all();
+            
+            $status=$categories->fill($data)->save();
+            if($status)
+            {
+                return redirect()->route('category.index')->with('success','successfully Updated Category');
+            }
+            else{
+                return back()->with('error','something went wrong');
+            }
+        }
+        else{
+            return back()->with('error','Data not found');
+        }
     }
 
     /**
@@ -80,6 +128,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data=Category::find($id);
+        $data->delete();
+        return redirect()->route('category.index')->with('success delete','successfully deleted banner');
     }
 }

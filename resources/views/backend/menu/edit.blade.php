@@ -1,12 +1,18 @@
 @extends('boothead.master')
   
   @section('content')
+    
     <section style="padding-top:60px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <div class="card">
-                        
+                        <div class="card-header">
+                            
+                            
+                            Edit Banner
+
+                        </div>
                         
                         <div class="card-body">
                             <div class="col-md-12">

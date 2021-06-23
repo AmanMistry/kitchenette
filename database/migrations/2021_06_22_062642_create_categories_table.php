@@ -15,8 +15,8 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->enum('type',['Veg','non-veg'])->default('veg');
-            $table->enum('meal',['Lunch','Dinner']);
+            $table->enum('type',['veg','nonveg']);
+            $table->enum('meal',['lunch','dinner']);
             $table->string('photo');
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
