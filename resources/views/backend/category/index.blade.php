@@ -17,13 +17,10 @@
                         <table class="table">
                             <tr>
                                 <th> Catrgory </th>
-                                <th><a href="/admin/category/create" class="btn btn-success">Add new Catrgory</a></th>
+                                <th><a href="/admin/category/create" class="btn btn-primary">Add new Catrgory</a></th>
                             
                             <!-- search  -->
-                                <form action="#" method="get">
-                                    <th><input type="text" class="form-control" name="query" placeholder="search here"></th>
-                                    <th><button type="submit" class="btn btn-success">Search</button></th>
-                                </form>
+                                
                             </tr>
                             </table>
                         </div>
@@ -56,7 +53,7 @@
                                     <td>
                                         <a href="{{ route("category.edit",$post->id) }}" class="float-left btn btn-success">Edit</a>
                                         
-                                        <a href="{{ "delete/".$post['id'] }}" class="btn btn-danger">Delete</a>
+                                        <a href="{{ "deletecat/".$post['id'] }}" class="btn btn-danger">Delete</a>
                                         
                                     </td>
                                 </tr>

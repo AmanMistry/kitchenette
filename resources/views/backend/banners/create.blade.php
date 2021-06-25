@@ -47,6 +47,7 @@
                                 <div class="form-group">
                                     <label for="status">Banner Status</label>
                                     <select name="status" class="form-control show-trick ">
+                                        <option value="">--Banner status list--</option>
                                         <option value="active" {{ old('status')=='active' ? 'selected' : '' }}>Active</option>
                                         <option value="inactive" {{ old('status')=='inactive' ? 'selected' : '' }}>InActive</option>
                                     </select>

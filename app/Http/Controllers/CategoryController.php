@@ -130,6 +130,6 @@ class CategoryController extends Controller
     {
         $data=Category::find($id);
         $data->delete();
-        return redirect()->route('category.index')->with('success delete','successfully deleted banner');
+        return redirect()->route('category.index')->with('success delete','successfully deleted catefory');
     }
 }

@@ -30,6 +30,7 @@
                                 <div class="form-group">
                                     <label for="type">Category Type</label>
                                     <select name="type" class="form-control show-trick ">
+                                        <option value="">--Category list--</option>
                                         <option value="veg" {{ old('type')=='veg' ? 'selected' : '' }}>Veg</option>
                                         <option value="nonveg" {{ old('type')=='nonveg' ? 'selected' : '' }}>NonVeg</option>
                                     </select>
@@ -40,6 +41,7 @@
                                 <div class="form-group">
                                     <label for="meal">Category Meal</label>
                                     <select name="meal" class="form-control show-trick ">
+                                        <option value="">-- meal list--</option>
                                         <option value="lunch" {{ old('meal')=='lunch' ? 'selected' : '' }}>lunch</option>
                                         <option value="dinner" {{ old('meal')=='dinner' ? 'selected' : '' }}>dinner</option>
                                     </select>
@@ -59,6 +61,7 @@
                                 <div class="form-group">
                                     <label for="status">Category Status</label>
                                     <select name="status" class="form-control show-trick ">
+                                        <option value="">--Category status list--</option>
                                         <option value="active" {{ old('status')=='active' ? 'selected' : '' }}>Active</option>
                                         <option value="inactive" {{ old('status')=='inactive' ? 'selected' : '' }}>InActive</option>
                                     </select>

@@ -11,7 +11,7 @@
                             <a class="collapsible-header has-arrow"><i class="material-icons">dashboard</i><span class="hide-menu"> Dashboard</span></a>
                             <div class="collapsible-body">
                                 <ul class="collapsible" data-collapsible="accordion">
-                                    <li><a href="javascript: void(1);" class="collapsible-header has-arrow"><i class="material-icons">adjust</i><span class="nav-text">Banner Management</span></a>
+                                    <li><a href="javascript: void(1);" class="collapsible-header has-arrow"><i class="material-icons">present_to_all</i><span class="nav-text">Banner Management</span></a>
                                         <div class="collapsible-body">
                                             <ul class="collapsible" data-collapsible="accordion">
                                                 <li><a href="{{ route('banner.index') }}"><i class="material-icons">adjust</i><span class="hide-menu">All Banner</span></a></li>
@@ -19,7 +19,7 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li><a href="javascript: void(1);" class="collapsible-header has-arrow"><i class="material-icons">adjust</i><span class="nav-text">Category Management</span></a>
+                                    <li><a href="javascript: void(1);" class="collapsible-header has-arrow"><i class="material-icons">equalizer</i><span class="nav-text">Category Management</span></a>
                                         <div class="collapsible-body">
                                             <ul class="collapsible" data-collapsible="accordion">
                                                 <li><a href="{{ route('category.index') }}"><i class="material-icons">adjust</i><span class="hide-menu">All category</span></a></li>
@@ -27,27 +27,29 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li><a href="javascript: void(1);" class="collapsible-header has-arrow"><i class="material-icons">adjust</i><span class="nav-text">Menu Management</span></a>
+                                    <li><a href="javascript: void(1);" class="collapsible-header has-arrow"><i class="material-icons">line_weight</i><span class="nav-text">Menu Management</span></a>
                                         <div class="collapsible-body">
                                             <ul class="collapsible" data-collapsible="accordion">
                                                 <li><a href="{{ route('menu.index') }}"><i class="material-icons">adjust</i><span class="hide-menu">All Menu</span></a></li>
                                                 <li><a href="{{ route('menu.create') }}"><i class="material-icons">adjust</i><span class="hide-menu">Add Menu</span></a></li>
                                             </ul>
                                         </div>
-                                    </li>
-                                    <li><a href="index4.html"><i class="material-icons">adjust</i><span class="hide-menu">Dashboard-4</span></a></li>
+                                    
                                 </ul>
                             </div>
                         </li>
                          <li>
-                            <a href="javascript: void(0);" class="collapsible-header has-arrow"><i class="material-icons">equalizer</i><span class="hide-menu"> Sidebar Types </span></a>
+                            <a href="javascript: void(0);" class="collapsible-header has-arrow"><i class="material-icons">group</i><span class="hide-menu"> Users Management </span></a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="sidebar-type-minisidebar.html"><i class="material-icons">photo_size_select_small</i><span class="hide-menu">Minisidebar</span></a></li>
-                                    <li><a href="sidebar-type-iconbar.html"><i class="material-icons">picture_in_picture</i><span class="hide-menu">Icon Sidebar</span></a></li>
-                                    <li><a href="sidebar-type-overlay.html"><i class="material-icons">low_priority</i><span class="hide-menu">Overlay Sidebar</span></a></li>
-                                    <li><a href="sidebar-type-fullsidebar.html"><i class="material-icons">present_to_all</i><span class="hide-menu">Full Sidebar</span></a></li>
-                                    <li><a href="sidebar-type-horizontalsidebar.html"><i class="material-icons">power_input</i><span class="hide-menu">Horizontal Sidebar</span></a></li>
+                                    
+                                        
+                                            <ul class="collapsible" data-collapsible="accordion">
+                                                <li><a href="{{ route('user.index') }}"><i class="material-icons">adjust</i><span class="hide-menu">All Users</span></a></li>
+                                                <li><a href="{{ route('user.create') }}"><i class="material-icons">adjust</i><span class="hide-menu">Add Users</span></a></li>
+                                            </ul>
+                                        
+                                  
                                 </ul>
                             </div>
                         </li>
@@ -55,6 +57,12 @@
                             <a href="javascript: void(0);" class="collapsible-header has-arrow"><i class="material-icons">library_books</i><span class="hide-menu"> Page Layouts </span></a>
                             <div class="collapsible-body">
                                 <ul>
+                                    <li><a href="sidebar-type-minisidebar.html"><i class="material-icons">photo_size_select_small</i><span class="hide-menu">Minisidebar</span></a></li>
+                                    <li><a href="sidebar-type-iconbar.html"><i class="material-icons">picture_in_picture</i><span class="hide-menu">Icon Sidebar</span></a></li>
+                                    <li><a href="sidebar-type-overlay.html"><i class="material-icons">low_priority</i><span class="hide-menu">Overlay Sidebar</span></a></li>
+                                    <li><a href="sidebar-type-fullsidebar.html"><i class="material-icons">present_to_all</i><span class="hide-menu">Full Sidebar</span></a></li>
+                                    <li><a href="sidebar-type-horizontalsidebar.html"><i class="material-icons">power_input</i><span class="hide-menu">Horizontal Sidebar</span></a></li>
+                                
                                     <li><a href="layout-inner-fixed-left-sidebar.html"><i class="material-icons">format_align_left</i><span class="hide-menu">Inner Fixed Left Sidebar</span></a></li>
                                     <li><a href="layout-inner-fixed-right-sidebar.html"><i class="material-icons">format_align_right</i><span class="hide-menu">Inner Fixed Right Sidebar</span></a></li>
                                     <li><a href="layout-inner-left-sidebar.html"><i class="material-icons">format_indent_increase</i><span class="hide-menu">Inner Left Sidebar</span></a></li>

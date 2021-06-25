@@ -21,7 +21,7 @@
 
    
 
-    @include('boothead.head')
+    @include('boothead.footer')
     
 </body>
 </html>

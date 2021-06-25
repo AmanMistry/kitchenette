@@ -20,10 +20,7 @@
                                 <th><a href="/admin/banner/create" class="btn btn-primary">Add new Banner</a></th>
                             
                             <!-- search  -->
-                                <form action="#" method="get">
-                                    <th><input type="text" class="form-control" name="query" placeholder="search here"></th>
-                                    <th><button type="submit" class="btn btn-primary">Search</button></th>
-                                </form>
+                               
                             </tr>
                             </table>
                         </div>
@@ -56,7 +53,10 @@
                                     <td>
                                         <a href="{{ route("banner.edit",$post->id) }}" class="float-left btn btn-success">Edit</a>
                                         
-                                        <a href="{{ "delete/".$post['id'] }}" class="btn btn-danger">Delete</a>
+                                         
+                                        <a href="{{ "deletebanner/".$post['id'] }}" class="btn btn-danger">Delete</a>
+                                       
+                                        
                                         
                                     </td>
                                 </tr>
@@ -70,6 +70,6 @@
         </div>
     </section>
 
-    
 
-    @endsection
+
+ @endsection

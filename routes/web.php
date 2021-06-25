@@ -1,9 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +19,9 @@ use App\Http\Controllers\MenuController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes(['register'=>false]);
 
@@ -35,14 +34,19 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
 
     //banner Section
     Route::resource('/banner', \App\Http\Controllers\BannerController::class);
-    Route::get('delete/{id}',[BannerController::class,'destroy']);
+    Route::get('/deletebanner/{id}',[BannerController::class,'destroy']);
    
     //category section
      Route::resource('/category', \App\Http\Controllers\CategoryController::class);
-     Route::get('delete/{id}',[CategoryController::class,'destroy']);
+     Route::get('/deletecat/{id}',[CategoryController::class,'destroy']);
     
     //menu section
     Route::resource('/menu', \App\Http\Controllers\MenuController::class);
-    Route::get('delete/{id}',[MenuController::class,'destroy']);
+    Route::get('/deletemenu/{id}',[MenuController::class,'destroy']);
+
+    //menu section
+    Route::resource('/user', \App\Http\Controllers\UserController::class);
+    Route::get('/deleteuser/{id}',[UserController::class,'destroy']);
+    Route::get('/search',[UserController::class,'search'])->name('web.search');
     
 });

@@ -132,11 +132,11 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
         $data=Banner::find($id);
         $data->delete();
         return redirect()->route('banner.index')->with('success delete','successfully deleted banner');
-       
     }
 }
