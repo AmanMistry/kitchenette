@@ -20,7 +20,7 @@
                                 </div>     
                                 @endif
                             </div>
-                            <form action="{{ route('banner.update',$banner->id) }}" method="post">
+                            <form action="{{ route('banner.update',$banner->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('patch')
                                 <div class="form-group">
@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <label for="description">Banner Image</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="file" name="photo" value="{{ $banner->photo }}" multiple />
+                                        <input class="form-control" type="file" name="photo" value="/photos/{{ $banner->photo }}" multiple />
                                     </div>
                                     <img id="holder" style="margin-top:15px;max-height:100px;">
                                 </div>

@@ -20,7 +20,7 @@
                                 </div>     
                                 @endif
                             </div>
-                            <form action="{{ route('banner.store') }}" method="post">
+                            <form action="{{ route('banner.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="title">Banner Title</label>
@@ -35,11 +35,12 @@
                                 <br>
 
                                 <div class="form-group">
-                                    <label for="description">Banner Image</label>
+                                    <label for="photo">Banner Image</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="file" name="photo" multiple />
-                                    </div>
-                                    <img id="holder" style="margin-top:15px;max-height:100px;">
+                                        
+                                        <input  class="form-control" type="file" name="photo">
+                                      </div>
+                                      <img id="holder" style="margin-top:15px;max-height:100px;">
                                 </div>
 
                                 <br>
@@ -65,4 +66,11 @@
 
 
 
+   @endsection
+
+   @section('scripts')
+   <script src="./vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+        <script>
+             $('#lfm').filemanager('image');
+        </script>
    @endsection

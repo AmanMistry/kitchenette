@@ -24,16 +24,18 @@ class UserTableSeeder extends Seeder
                 'full_name'=>'Harsh admin',
                 'email'=>'admin@gmail.com',
                 'password'=>Hash::make('aaa'),
+                'city_id'=>'1',
                 'role'=>'admin',
                 'status'=>'active',
             ],
 
             //vendor
             [
-                'full_name'=>'vendor boi',
-                'email'=>'vendor@gmail.com',
+                'full_name'=>'seller boi',
+                'email'=>'seller@gmail.com',
                 'password'=>Hash::make('vvv'),
-                'role'=>'vendor',
+                'city_id'=>'1',
+                'role'=>'seller',
                 'status'=>'active',
             ],
 
@@ -42,6 +44,7 @@ class UserTableSeeder extends Seeder
                 'full_name'=>'user boi',
                 'email'=>'user@gmail.com',
                 'password'=>Hash::make('uuu'),
+                'city_id'=>'1',
                 'role'=>'customer',
                 'status'=>'active',
             ],

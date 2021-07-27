@@ -26,7 +26,7 @@
                                 </div>     
                                 @endif
                             </div>
-                            <form action="{{ route('menu.update',$menu->id) }}" method="post">
+                            <form action="{{ route('menu.update',$menu->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('patch')
                                 <div class="form-group">
@@ -36,15 +36,15 @@
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <label for="description">Banner Description</label>
+                                    <label for="description">Menu Description</label>
                                     <textarea name="description" placeholder="Write some text here..." class="form-control"  id="" cols="30" rows="10">{{ $menu->description }}</textarea>
                                 </div>
                                 <br>
 
                                 <div class="form-group">
-                                    <label for="description">Banner Image</label>
+                                    <label for="description">Menu Image</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="file" name="photo" value="{{ $menu->photo }}" multiple />
+                                        <input class="form-control" type="file" name="photo" value="/photos/{{ $menu->photo }}" multiple />
                                     </div>
                                     <img id="holder" style="margin-top:15px;max-height:100px;">
                                 </div>
@@ -61,7 +61,7 @@
 
                                 <div class="form-group">
                                     <label for="discunt">Menu Discount</label>
-                                    <input type="number" step="any" name="discount" class="form-control" placeholder="Enter discount"value="{{ $menu->discount }}"/>
+                                    <input type="number" step="any" name="discount" class="form-control" placeholder="Enter discount" vvalue="{{ $menu->discount }}"/>
                                 </div>
                                 
                                 <br>
@@ -82,11 +82,26 @@
                                 <br>
 
                                 <div class="form-group">
+                                    <label for="city_id">Menu City</label>
+                                    <select name="city_id" class="form-control show-trick ">
+                                        <option value="">--City list--</option>
+                                        
+                                        @foreach (\App\Models\City::get() as $city)
+                                        <option value="{{ $city->id }}">{{ $city->name}}</option> 
+                                        @endforeach
+                                        
+                                        
+                                    </select>
+                                </div>
+                                
+                                <br>
+
+                                <div class="form-group">
                                     <label for="vendor_id">Vendors</label>
                                     <select name="vendor_id" class="form-control show-trick ">
                                         <option value="">--Vendor list--</option>
                                         
-                                        @foreach (\App\Models\User::where('role','vendor')->get() as $vendor)
+                                        @foreach (\App\Models\User::where('role','seller')->get() as $vendor)
                                         <option value="{{ $vendor->id }}" >{{ $vendor->full_name }}</option> 
                                         @endforeach
                                         
@@ -100,7 +115,7 @@
 
 
                                 <div class="form-group">
-                                    <label for="status">Banner Status</label>
+                                    <label for="status">Menu Status</label>
                                     <select name="status" class="form-control show-trick ">
                                         <option value="active" {{ $menu->status=='active' ? 'selected' : '' }}>Active</option>
                                         <option value="inactive" {{ $menu->status=='inactive' ? 'selected' : '' }}>InActive</option>

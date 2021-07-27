@@ -21,6 +21,7 @@ class CreateMenusTable extends Migration
             $table->string('photo');
             //foreign key
             $table->unsignedBigInteger('cat_id');
+            $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('vendor_id')->nullable();
             $table->float('price')->default(0);
             $table->float('offer_price')->default(0);
@@ -29,6 +30,7 @@ class CreateMenusTable extends Migration
 
             //foreign key
             $table->foreign('cat_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->foreign('vendor_id')->references('id')->on('users')->onDelete('SET NULL');
             $table->timestamps();
         });

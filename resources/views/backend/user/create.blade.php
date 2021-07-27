@@ -51,7 +51,7 @@
 
                                 <div class="form-group">
                                     <label for="password">User Password</label>
-                                    <input type="text" name="password" class="form-control" placeholder="Enter password"value="{{ old('password') }}"/>
+                                    <input type="password" name="password" class="form-control" placeholder="Enter password"value="{{ old('password') }}"/>
 
                                 </div>
                                 <br>
@@ -74,12 +74,23 @@
                                 <br>
 
                                 <div class="form-group">
+                                    <label for="city_id">User City</label>
+                                    <select name="city_id" class="form-control show-trick ">
+                                        <option value="">--User City list--</option>
+                                        @foreach (\App\Models\City::get() as $city)
+                                        <option value="{{ $city->id }}">{{ $city->name}}</option> 
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <br> 
+
+                                <div class="form-group">
                                     <label for="role">User Role</label>
                                     <select name="role" class="form-control show-trick ">
                                         <option value="">--User role list--</option>
                                         <option value="admin" {{ old('role')=='admin' ? 'selected' : '' }}>ADMIN</option>
                                         <option value="customer" {{ old('role')=='customer' ? 'selected' : '' }}>CUSTOMER</option>
-                                        <option value="vendor" {{ old('role')=='vendor' ? 'selected' : '' }}>VENDOR</option>
+                                        <option value="seller" {{ old('role')=='seller' ? 'selected' : '' }}>SELLER</option>
                                     </select>
                                 </div>
                                 <br>                                

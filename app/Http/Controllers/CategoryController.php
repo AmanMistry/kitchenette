@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\DB;
 
@@ -17,8 +18,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories=Category::orderBy('id','DESC')->get();
-        return view('backend.category.index',compact('categories'));
+        $role=Auth::user()->role;
+        if($role=='admin'){
+            $categories=Category::orderBy('id','DESC')->get();
+            return view('backend.category.index',compact('categories'));
+        }
+        else{
+            return view('error');
+        }
+        
     }
 
     /**
@@ -42,11 +50,15 @@ class CategoryController extends Controller
         $this->validate($request,[
             'type' => 'nullable|in:veg,nonveg',
             'meal' => 'nullable|in:lunch,dinner',
-            'photo' => 'required',
+            'photo' =>  'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'nullable|in:active,inactive',
         ]);
         $data=$request->all();
         
+        $name = $request->file('photo')->getClientOriginalName();
+        $photo=$request->photo->move(public_path('photos'), $name);
+        $data['photo']=$name;
+
         $status=Category::create($data);
         if($status)
         {
@@ -101,7 +113,7 @@ class CategoryController extends Controller
             $this->validate($request,[
                 'type' => 'nullable|in:veg,nonveg',
                 'meal' => 'nullable|in:lunch,dinner',
-                'photo' => 'required',
+                'photo' =>  'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'status' => 'nullable|in:active,inactive',
             ]);
             $data=$request->all();

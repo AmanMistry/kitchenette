@@ -1,0 +1,56 @@
+
+.card {
+    background-color: #eae7ee;
+    padding: 10px;
+    border: none;
+    height: 400px;
+    position: relative;
+    cursor: pointer
+}
+
+
+
+.product-image img {
+    position: absolute;
+    top: -50px;
+    width: 400px;
+    transition: all 0.5s
+}
+
+.card:hover .product-image img {
+    transform: rotate(10deg)
+}
+
+
+.button {
+    width: 160px;
+    height: 48px;
+    border: none;
+    border-radius: 30px;
+    position: absolute;
+    bottom: 20px;
+    background-color: #3d2e55;
+    color: #fff
+}
+
+.button i {
+    margin-top: 1px
+}
+
+@media (max-width:770px) {
+    .product-image img {
+        position: absolute;
+        top: 130px;
+        right: 10px;
+        width: 250px
+    }
+}
+
+@media (max-width:470px) {
+    .product-image img {
+        position: absolute;
+        top: 190px;
+        right: 10px;
+        width: 150px
+    }
+}

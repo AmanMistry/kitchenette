@@ -5,8 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Banner;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+
 
 use Illuminate\Support\Facades\DB;
+
+
+
+
 
 class BannerController extends Controller
 {
@@ -15,10 +21,20 @@ class BannerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     
+       
     public function index()
     {
-        $banners=Banner::orderBy('id','DESC')->get();
-        return view('backend.banners.index',compact('banners'));
+        $role=Auth::user()->role;
+        if($role=='admin'){
+            $banners=Banner::orderBy('id','DESC')->get();
+            return view('backend.banners.index',compact('banners'));
+        }
+        else{
+            return view('error');
+        }
+        
     }
 
     /**
@@ -42,10 +58,22 @@ class BannerController extends Controller
         $this->validate($request,[
             'title' => 'string|required',
             'description' => 'string|nullable',
-            'photo' => 'required',
+            'photo' =>  'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'nullable|in:active,inactive',
         ]);
+        
+
+
+        
+
+
         $data=$request->all();
+
+        
+        $name = $request->file('photo')->getClientOriginalName();
+        $photo=$request->photo->move(public_path('photos'), $name);
+        $data['photo']=$name;
+        
         $slug=Str::slug($request->input('title'));
         $slug_count=Banner::where('slug',$slug)->count();
         if($slug_count>0){
@@ -107,10 +135,14 @@ class BannerController extends Controller
             $this->validate($request,[
                 'title' => 'string|required',
                 'description' => 'string|nullable',
-                'photo' => 'required',
+                'photo' =>  'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'status' => 'nullable|in:active,inactive',
             ]);
             $data=$request->all();
+
+            $name = $request->file('photo')->getClientOriginalName();
+            $photo=$request->photo->move(public_path('photos'), $name);
+            $data['photo']=$name;
             
             $status=$banner->fill($data)->save();
             if($status)
@@ -139,4 +171,9 @@ class BannerController extends Controller
         $data->delete();
         return redirect()->route('banner.index')->with('success delete','successfully deleted banner');
     }
+
+    
 }
+
+
+

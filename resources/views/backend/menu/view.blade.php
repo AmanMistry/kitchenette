@@ -18,16 +18,29 @@
                         <div class="col-md-12">
                             @php
                                 $post=\App\Models\Menu::where('id',$menu->id)->first();
+
+                                
+                                
+                                
                             @endphp
 
                             <strong><h5 class="card-title text-center">{{ $post->title }}</h5></strong>
                             
                         <br>
-                                <strong>Description:</strong>
-                                <p>{!! html_entity_decode($post->description) !!}</p>
-  
-            
                                 
+  
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <strong>Description:</strong>
+                                        <p>{!! html_entity_decode($post->description) !!}</p>
+                                  </div>
+                                    <div class="col-md-6">
+                                        <strong>City:</strong>
+                                        <p>{{ $post->city_id}}</p>
+                                    </div>
+                                </div>
+                                
+                               
                             
                                 <div class="row">
                                     <div class="col-md-6">

@@ -61,16 +61,31 @@
                                 
                                 <br>
 
+
+                                <div class="form-group">
+                                    <label for="city_id">User City</label>
+                                    <select name="city_id" class="form-control show-trick ">
+                                        <option value="">--User City list--</option>
+                                        @foreach (\App\Models\City::get() as $city)
+                                        <option value="{{ $city->id }}">{{ $city->name}}</option> 
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <br> 
+
+
                                 <div class="form-group">
                                     <label for="role">User Role</label>
                                     <select name="role" class="form-control show-trick ">
                                         <option value="admin" {{ $users->role=='admin' ? 'selected' : '' }}>ADMIN</option>
                                         <option value="customer" {{ $users->role=='customer' ? 'selected' : '' }}>CUSTOMER</option>
-                                        <option value="vendor" {{ $users->role=='vendor' ? 'selected' : '' }}>VENDOR</option>
+                                        <option value="seller" {{ $users->role=='seller' ? 'selected' : '' }}>SELLER</option>
                                     </select>
                                 </div>
                                 <br>
 
+
+                                
 
 
                                 <div class="form-group">

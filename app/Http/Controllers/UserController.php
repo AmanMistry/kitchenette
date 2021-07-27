@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 
 use Illuminate\Support\Facades\DB;
@@ -20,8 +21,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users=User::orderBy('id','DESC')->get();
-        return view('backend.user.index',compact('users'));
+        $role=Auth::user()->role;
+        if($role=='admin'){
+            $users=User::orderBy('id','DESC')->get();
+            return view('backend.user.index',compact('users'));
+        }
+        else{
+            return view('error');
+        }
+        
     }
 
     public function search(Request $request)
@@ -68,7 +76,7 @@ class UserController extends Controller
             'photo'=>'required',
             'phone'=>'string|nullable',
             'address'=>'string|nullable',
-            'role'=>'required|in:admin,customer,vendor',
+            'role'=>'required|in:admin,customer,seller',
             'status'=>'required|in:active,inactive'
         ]);
 
@@ -139,7 +147,8 @@ class UserController extends Controller
                 'photo'=>'required',
                 'phone'=>'string|nullable',
                 'address'=>'string|nullable',
-                'role'=>'required|in:admin,customer,vendor',
+                'city_id'=> 'required|string',
+                'role'=>'required|in:admin,customer,seller',
                 'status'=>'required|in:active,inactive'
             ]);
             $data=$request->all();

@@ -25,11 +25,11 @@
                                 </div>     
                                 @endif
                             </div>
-                            <form action="{{ route('menu.store') }}" method="post">
+                            <form action="{{ route('menu.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="title">Menu Title</label>
-                                    <input type="text" name="title" class="form-control" placeholder="Enter Menu title"value="{{ old('title') }}"/>
+                                    <input type="text" name="title" class="form-control" placeholder="Enter Menu title" value="{{ old('title') }}"/>
 
                                 </div>
                                 <br>
@@ -51,14 +51,14 @@
 
                                 <div class="form-group">
                                     <label for="price">Menu Price</label>
-                                    <input type="number" step="any" name="price" class="form-control" placeholder="Enter menu price"value="{{ old('price') }}"/>
+                                    <input type="number" step="any" name="price" class="form-control" placeholder="Enter menu price" value="{{ old('price') }}"/>
                                 </div>
                                 
                                 <br>
 
                                 <div class="form-group">
                                     <label for="discunt">Menu Discount</label>
-                                    <input type="number" step="any" name="discount" class="form-control" placeholder="Enter discount"value="{{ old('discount') }}"/>
+                                    <input type="number" step="any" name="discount" class="form-control" placeholder="Enter discount" value="{{ old('discount') }}"/>
                                 </div>
                                 
                                 <br>
@@ -79,11 +79,26 @@
                                 <br>
 
                                 <div class="form-group">
+                                    <label for="city_id">Menu City</label>
+                                    <select name="city_id" class="form-control show-trick ">
+                                        <option value="">--City list--</option>
+                                        
+                                        @foreach (\App\Models\City::get() as $city)
+                                        <option value="{{ $city->id }}">{{ $city->name}}</option> 
+                                        @endforeach
+                                        
+                                        
+                                    </select>
+                                </div>
+                                
+                                <br>
+
+                                <div class="form-group">
                                     <label for="vendor_id">Vendors</label>
                                     <select name="vendor_id" class="form-control show-trick ">
                                         <option value="">--Vendor list--</option>
                                         
-                                        @foreach (\App\Models\User::where('role','vendor')->get() as $vendor)
+                                        @foreach (\App\Models\User::where('role','seller')->get() as $vendor)
                                         <option value="{{ $vendor->id }}" >{{ $vendor->full_name }}</option> 
                                         @endforeach
                                         
@@ -95,7 +110,7 @@
 
 
                                 <div class="form-group">
-                                    <label for="status">Banner Status</label>
+                                    <label for="status">Menu Status</label>
                                     <select name="status" class="form-control show-trick ">
                                         <option value="">--Banner status list--</option>
                                         <option value="active" {{ old('status')=='active' ? 'selected' : '' }}>Active</option>

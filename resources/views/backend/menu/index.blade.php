@@ -34,7 +34,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Menu title</th>
-                                        <th>Menu slug</th>
+                                        <th>Menu city</th>
                                         <th>Menu description</th>
                                         <th>Menu photo</th>
                                         <th>Menu price</th>
@@ -49,9 +49,9 @@
                                 <tr>
                                     <td>{{$post->id}}</td>
                                     <td>{{$post->title}}</td>
-                                    <td>{{$post->slug}}</td>
+                                    <td>{{$post->city_id}}</td>
                                     <td>{{$post->description}}</td>
-                                    <td><img src="{{ $post->photo }}" alt="menu img" style="max-height: 90px; max-width:120px;"></td>
+                                    <td><img src="/photos/{{ $post->photo }}" alt="menu img" style="max-height: 90px; max-width:120px;"></td>
                                     <td>{{$post->price}}₹</td>
                                     <td>{{$post->discount}}%</td>
                                     <td>{{$post->offer_price}}₹</td>

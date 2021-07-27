@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Menu;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\DB;
 
@@ -17,8 +18,15 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus=Menu::orderBy('id','DESC')->get();
-        return view('backend.menu.index',compact('menus'));
+        $role=Auth::user()->role;
+        if($role=='admin'){
+            $menus=Menu::orderBy('id','DESC')->get();
+            return view('backend.menu.index',compact('menus'));
+        }
+        else{
+            return view('error');
+        }
+        
     }
 
     /**
@@ -45,15 +53,20 @@ class MenuController extends Controller
         $this->validate($request,[
             'title'=>'string|required',
             'descrtption'=>'string|nullable',
-            'photo'=>'required',
+            'photo'=>'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'price'=>'nullable|numeric',
             'discount'=>'nullable|numeric',
             'cat_id'=>'required',
+            'city_id'=>'required',
             'vendor_id'=>'required',
             'status'=>'nullable|in:active,inactive'
         ]);
 
         $data=$request->all();
+
+        $name = $request->file('photo')->getClientOriginalName();
+        $photo=$request->photo->move(public_path('photos'), $name);
+        $data['photo']=$name;
 
         $slug=Str::slug($request->input('title'));
         $slug_count=Menu::where('slug',$slug)->count();
@@ -131,10 +144,15 @@ class MenuController extends Controller
                 'price'=>'nullable|numeric',
                 'discount'=>'nullable|numeric',
                 'cat_id'=>'required',
+                'city_id'=>'required',
                 'vendor_id'=>'required',
                 'status'=>'nullable|in:active,inactive'
             ]);
             $data=$request->all();
+
+            $name = $request->file('photo')->getClientOriginalName();
+            $photo=$request->photo->move(public_path('photos'), $name);
+            $data['photo']=$name;
             
             $slug=Str::slug($request->input('title'));
             $slug_count=Menu::where('slug',$slug)->count();
@@ -172,4 +190,6 @@ class MenuController extends Controller
         $delete->delete();
         return redirect()->route('menu.index');
     }
+
+
 }

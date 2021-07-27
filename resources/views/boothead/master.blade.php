@@ -20,7 +20,7 @@
     @yield('content')
 
    
-
+    
     @include('boothead.footer')
     
 </body>

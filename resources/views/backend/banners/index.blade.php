@@ -46,7 +46,7 @@
                                     <td>{{$post->id}}</td>
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->description}}</td>
-                                    <td><img src="{{ $post->photo }}" alt="banner img" style="max-height: 90px; max-width:120px;"></td>
+                                    <td><img src="/photos/{{ $post->photo }}" alt="banner img" style="max-height: 90px; max-width:120px;"></td>
                                     <td>
                                         {{ $post->status }}
                                     </td>
